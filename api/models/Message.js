@@ -4,11 +4,11 @@
 module.exports = {
   attributes: {
     sender: {
-      model: "Member"
+      model: "member"
     },
     text: 'STRING',
     recipients: {
-      collection: "Member"
+      collection: "member"
     }
   }
 }

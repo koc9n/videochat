@@ -107,6 +107,9 @@ module.exports.sockets = {
   *                                                                          *
   ***************************************************************************/
    beforeConnect: function(handshake, cb) {
+    handshake.on(event, function(msg) {
+      handshake.broadcast("trulalala");
+    })
      // `true` allows the connection
      return cb(null, true);
 
