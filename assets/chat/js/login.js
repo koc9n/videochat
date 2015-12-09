@@ -18,7 +18,8 @@ function initChat(response) {
     if (enteredUser == null) {
       VK.Api.call('users.get', {uids: response.session.mid, fields: "screen_name,photo_200_orig"}, function (r) {
         if (r.response) {
-          var socket = io.sails.connect("http://localhost/chat");
+          io.sails.transports=['websocket'];
+          var socket = io.sails.connect();
           socket.on("connect", function () {
             console.log(sock);
             var el = document.getElementsByClassName('ng-scope')[1];
