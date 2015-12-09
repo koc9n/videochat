@@ -4,56 +4,46 @@
 
 var enteredUser = null;
 
+
+
 function sendData() {
-    var messageEl = document.getElementById('messageInput');
-    var messageObj = {sender: enteredUser, text: messageEl.value, recipients: []};
-    Chat.socket.send(angular.toJson(messageObj));
-    messageEl.value = "";
+  var messageEl = document.getElementById('messageInput');
+  var messageObj = {sender: enteredUser, text: messageEl.value, recipients: []};
+  Chat.socket.send(angular.toJson(messageObj));
+  messageEl.value = "";
 }
 
 function initChat(response) {
-    if (response.session) {
-        if (enteredUser == null) {
-            VK.Api.call('users.get', {uids: response.session.mid, fields: "screen_name,photo_200_orig"}, function (r) {
-                if (r.response) {
-                    Chat.initialize('/ws/chat?screen_name=' + r.response[0].screen_name +
-                        '&first_name=' + r.response[0].first_name +
-                        '&last_name=' + r.response[0].last_name +
-                        '&photo_200_orig=' + r.response[0].photo_200_orig, 'blob');
-                    Chat.socket.onmessage = function (evt) {
-                        var dataObj = angular.fromJson(evt.data);
-                        var el = document.getElementsByClassName('ng-scope')[1];
-                        var scope = angular.element(el).scope();
-                        switch (dataObj.eventType) {
-                            case 'MESSAGE':
-                                scope.pushToMessages(dataObj.message);
-                                scope.$apply();
-                                break;
-                            case 'USER_CONNECTED':
-                                if (enteredUser == null) {
-                                    enteredUser = dataObj.member;
-                                }
-                                scope.pushToMembers(dataObj.member);
-                                scope.$apply();
-                                break;
-                            case 'USER_DISCONNECTED':
-                                break;
-                        }
-                    }
-                }
-            });
+  if (response.session) {
+    if (enteredUser == null) {
+      VK.Api.call('users.get', {uids: response.session.mid, fields: "screen_name,photo_200_orig"}, function (r) {
+        if (r.response) {
+          var socket = io.sails.connect("http://localhost/chat");
+          socket.on("connect", function () {
+            console.log(sock);
+            var el = document.getElementsByClassName('ng-scope')[1];
+            var scope = angular.element(el).scope();
+            scope.pushToMessages(msg.verb);
+            scope.$apply();
+          });
+          socket.on("order", function onServerSentEvent(msg) {
+            var el = document.getElementsByClassName('ng-scope')[1];
+            var scope = angular.element(el).scope();
+            scope.pushToMessages(msg.verb);
+            scope.$apply();
+          });
         }
-    } else {
-        Chat.socket.close();
-        enteredUser = null;
+      });
     }
+  }
 }
+
 function authInfo(response) {
-    initChat(response);
+  initChat(response);
 }
 
 VK.init({
-    apiId: 4551676
+  apiId: 4551676
 });
 
 VK.Auth.login(authInfo);
