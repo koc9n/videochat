@@ -51,7 +51,8 @@ module.exports.passport = {
     options: {
       clientID: '4551676',
       clientSecret: 'SgFGqj0oXyKWUDguQqAB',
-      scope: ['email']
+      scope: ['email'],
+      profileFields: ['screen_name','domain','photo_200_orig','sex','middle_name']
     }
   }
 /*
