@@ -42,6 +42,17 @@ module.exports.passport = {
       clientSecret: 'your-client-secret',
       scope: ['email']
     }
+  },
+
+  vkontakte: {
+    name: 'Vkontakte',
+    protocol: 'oauth2',
+    strategy: require('vkontakte-passport').Strategy,
+    options: {
+      clientID: '4551676',
+      clientSecret: 'SgFGqj0oXyKWUDguQqAB',
+      scope: ['email']
+    }
   }
 /*
   google: {
