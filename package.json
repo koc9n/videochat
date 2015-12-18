@@ -28,7 +28,7 @@
     "sails-disk": "~0.10.0",
     "sails-mongo": "^0.11.5",
     "validator": "^4.4.0",
-    "vkontakte-passport": "^1.1.7"
+    "vkontakte-passport": "^1.1.9"
   },
   "scripts": {
     "debug": "node debug app.js",
