@@ -38,7 +38,9 @@ module.exports.routes = {
 /*  '/login': {
     view: 'login'
   },*/
-  '/chat': 'ChatController.chat',
+  'get /chat': 'ChatController.chat',
+  'get /chat/init': 'ChatController.init',
+
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
