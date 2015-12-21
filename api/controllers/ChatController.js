@@ -24,18 +24,24 @@ module.exports = {
   init: function (req, res) {
     var data_from_client = req.params.all();
     sails.log(data_from_client);
+    //sails.log("session user: " + sessionUser.email+sessionUser.username);
     /**
      * POST
      */
     if (req.isSocket && req.method === 'POST') {
       // This is the message from connected client
       // So add new conversation
-      Chat.create(data_from_client)
-        .exec(function (error, data_from_client) {
-          console.log(data_from_client);
-          Chat.publishCreate({id: data_from_client.id, message: data_from_client.message, user: data_from_client.user});
-        });
-      req.socket.emit('chat', "connected");
+      User.find(req.session.passport.user).exec(function findCB(err, found) {
+        while (found.length) {
+          var sessionUser = found.pop();
+          Chat.create({message: data_from_client.message, user: sessionUser})
+            .exec(function (error, data_from_client) {
+              console.log(data_from_client);
+              req.socket.emit('chat', {message: data_from_client.message, user: sessionUser});
+            });
+        }
+      });
+
     }
 
     /**
@@ -43,8 +49,6 @@ module.exports = {
      */
     else if (req.isSocket) {
       // subscribe client to model changes
-      Chat.watch(req.socket);
-      req.socket.emit('chat', "connected");
       console.log('User subscribed to ' + req.socket.id);
     }
   },
