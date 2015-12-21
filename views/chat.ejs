@@ -33,11 +33,11 @@
             <div class="highlight" style="overflow: auto;width:auto;height: 600px;">
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="message in messageArr">
-                        <a style="display:block;float:right;" id="thumb" href="http://vk.com/{{message.sender.nick}}"
+                        <a style="display:block;float:right;" id="thumb" href="http://vk.com/{{message.user.profileUrl}}"
                            target="_blank"
                            tooltip-placement="left"
-                           tooltip="{{message.sender.firstName + ' ' + message.sender.lastName}}">
-                            <img style="width:50px;height:auto" ng-src="{{message.sender.photoUrl}}"
+                           tooltip="{{message.user.name.givenName + ' ' + message.user.name.familyName}}">
+                            <img style="width:50px;height:auto" ng-src="{{message.user.photos[0].value}}"
                                  class="img-circle img-responsive">
                         </a>
 
@@ -63,6 +63,8 @@
     <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>
 </footer>
 </body>
+<script src='/chat/js/angular.js'></script>
+<script src='/chat/js/controller.js'></script>
 <script src='/chat/js/sails.io.js'></script>
-<script src='/chat/js/login.js'></script>
+<script src='/chat/js/chat.js'></script>
 </html>

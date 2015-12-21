@@ -1,19 +1,57 @@
-<% if (errors) {%>
-  <% errors.forEach(function (error) { %>
-    <%= __(error) %>
-  <% }) %>
-<% } %>
+<html>
+<head>
+  <title>Enter to Chat</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/chat/css/chat.css"/>
+</head>
+<body class="container">
+<header class="navbar navbar-default">
+  <div class="navbar-header">
+    <span class="navbar-brand">Social Chat</span>
+  </div>
+</header>
+<section class="jumbotron">
+  <article>
+    <div class="auth-block">
+      <div class="error">
+        <% if (errors) {%>
+        <% errors.forEach(function (error) { %>
+        <%= __(error) %>
+        <% }) %>
+        <% } %></div>
 
-<form role="form" action="/auth/local" method="post">
-  <input type="text" name="identifier" placeholder="Username or Email">
-  <input type="password" name="password" placeholder="Password">
-  <button type="submit">Sign in</button>
-</form>
+      <form role="form" action="/auth/local" method="post">
+        <input type="text" name="identifier" placeholder="Username or Email">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Sign in</button>
+      </form>
 
-<% if (Object.keys(providers).length) {%>
-  <h4>You can also use one of these...</h4>
+      <% if (Object.keys(providers).length) {%>
+      <h4>You can also use one of these...</h4>
 
-  <% Object.keys(providers).forEach(function (key) { %>
-    <a href="/auth/<%= providers[key].slug %>" role="button"><%= providers[key].name %></a>
-  <% }) %>
-<% } %>
+      <% Object.keys(providers).forEach(function (key) { %>
+      <% if(providers[key].name) {%>
+      <div class="btn-group-lg">
+        <a class="btn btn-default btn-block"
+           href="/auth/<%= providers[key].slug %>"
+           target="_top"><%= providers[key].name %></a>
+      </div>
+      <% } %>
+      <% }) %>
+      <% } %>
+
+    </div>
+  </article>
+</section>
+<footer class="page-footer">
+  <img class="foologo" src="" alt=""/>
+  <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>
+</footer>
+</body>
+</html>
+
+
+

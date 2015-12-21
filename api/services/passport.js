@@ -94,6 +94,9 @@ passport.connect = function (req, query, profile, next) {
   if (profile.hasOwnProperty('photos')) {
     user.photos = profile.photos;
   }
+  if (profile.hasOwnProperty('profileUrl')) {
+    user.profileUrl = profile.profileUrl;
+  }
 
 
   // If neither an email or a username was available in the profile, we don't

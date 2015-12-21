@@ -23,8 +23,7 @@ module.exports = {
    */
   init: function (req, res) {
     var data_from_client = req.params.all();
-    sails.log(data_from_client);
-    //sails.log("session user: " + sessionUser.email+sessionUser.username);
+
     /**
      * POST
      */
@@ -34,9 +33,11 @@ module.exports = {
       User.find(req.session.passport.user).exec(function findCB(err, found) {
         while (found.length) {
           var sessionUser = found.pop();
-          Chat.create({message: data_from_client.message, user: sessionUser})
+          Chat.create({message: data_from_client.message, user: sessionUser}).populate('user')
             .exec(function (error, data_from_client) {
-              console.log(data_from_client);
+              if (err) {
+                sails.error(err);
+              }
               req.socket.emit('chat', {message: data_from_client.message, user: sessionUser});
             });
         }
@@ -48,10 +49,13 @@ module.exports = {
      * GET
      */
     else if (req.isSocket) {
-      // subscribe client to model changes
-      console.log('User subscribed to ' + req.socket.id);
+      Chat.find({}).populate('user').exec(function (err, chatHistory) {
+        if (err) {
+          sails.error(err);
+        }
+        req.socket.emit('init', chatHistory);
+      })
     }
-  },
-
+  }
 };
 

@@ -10,6 +10,7 @@ myApp.controller('ChatController', ['$scope', function($scope) {
     $scope.pushToMessages = function(item) {
         $scope.messageArr.unshift({
             text: item.message,
+            user: item.user
         });
     };
 

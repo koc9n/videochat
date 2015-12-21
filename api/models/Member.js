@@ -9,4 +9,5 @@ module.exports = {
     lastName: 'STRING',
     photoUrl: 'STRING',
   }
+
 }

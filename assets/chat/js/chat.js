@@ -1,12 +1,6 @@
 /**
  * Created by kos on 24.09.2014.
  */
-var socket;
-
-window.onload = function() {
-  socket = initChat();
-
-}
 
 function sendData() {
   var messageEl = document.getElementById('messageInput');
@@ -20,16 +14,37 @@ function initChat() {
   var socket = io.sails.connect();
   socket.get('/chat/init');
 
-  socket.on("connect", function (msg) {
-    console.log('socket connected');
+  /**
+   * Info about socket connection
+   */
+  socket.on("connect", function () {
+    console.log('Chat socket has been connected successfully.');
   });
 
+  /**
+   * Action by init of chat
+   */
+  socket.on("init", function (msg) {
+    var el = document.getElementsByClassName('ng-scope')[1];
+    var scope = angular.element(el).scope();
+    for (var i in msg){
+      scope.pushToMessages(msg[i]);
+    }
+    scope.$apply();
+  });
+
+  /**
+   * Receiving messages
+   */
   socket.on("chat", function onServerSentEvent(msg) {
     var el = document.getElementsByClassName('ng-scope')[1];
     var scope = angular.element(el).scope();
     scope.pushToMessages(msg);
     scope.$apply();
   });
+
   return socket;
 }
+
+var socket = initChat();
 
