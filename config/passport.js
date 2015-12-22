@@ -52,7 +52,8 @@ module.exports.passport = {
       clientID: '4551676',
       clientSecret: 'SgFGqj0oXyKWUDguQqAB',
       scope: ['email'],
-      profileFields: ['screen_name','domain','photo_200_orig','sex','middle_name']
+      profileFields: ['screen_name','domain','photo_200_orig','sex','middle_name'],
+      callbackURL: 'http://192.168.0.101/auth/vkontakte/callback'
     }
   }
 /*

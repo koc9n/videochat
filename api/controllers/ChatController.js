@@ -30,30 +30,32 @@ module.exports = {
     if (req.isSocket && req.method === 'POST') {
       // This is the message from connected client
       // So add new conversation
-      User.find(req.session.passport.user).exec(function findCB(err, found) {
-        while (found.length) {
-          var sessionUser = found.pop();
-          Chat.create({message: data_from_client.message, user: sessionUser}).populate('user')
-            .exec(function (error, data_from_client) {
-              if (err) {
-                sails.error(err);
-              }
-              req.socket.emit('chat', {message: data_from_client.message, user: sessionUser});
-            });
-        }
-      });
-
+      if(data_from_client.message.trim() != "") {
+        User.find(req.session.passport.user).exec(function findCB(err, found) {
+          while (found.length) {
+            var sessionUser = found.pop();
+            Chat.create({message: data_from_client.message, user: sessionUser}).populate('user')
+              .exec(function (error, data_from_client) {
+                if (err) {
+                  sails.error(err);
+                }
+                sails.sockets.broadcast('1', 'chat', {message: data_from_client.message, user: sessionUser});
+              });
+          }
+        });
+      }
     }
 
     /**
      * GET
      */
     else if (req.isSocket) {
+      sails.sockets.join(req.socket,'1');
       Chat.find({}).populate('user').exec(function (err, chatHistory) {
         if (err) {
           sails.error(err);
         }
-        req.socket.emit('init', chatHistory);
+        sails.sockets.broadcast('1','init', chatHistory);
       })
     }
   }

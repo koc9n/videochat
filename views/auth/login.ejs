@@ -14,14 +14,14 @@
   </div>
 </header>
 <section class="jumbotron">
-  <article>
     <div class="auth-block">
       <div class="error">
-        <% if (errors) {%>
+        <% if (errors) { %>
         <% errors.forEach(function (error) { %>
         <%= __(error) %>
         <% }) %>
-        <% } %></div>
+        <% } %>
+      </div>
 
       <form role="form" action="/auth/local" method="post">
         <input type="text" name="identifier" placeholder="Username or Email">
@@ -29,11 +29,11 @@
         <button type="submit">Sign in</button>
       </form>
 
-      <% if (Object.keys(providers).length) {%>
+      <% if (Object.keys(providers).length) { %>
       <h4>You can also use one of these...</h4>
 
       <% Object.keys(providers).forEach(function (key) { %>
-      <% if(providers[key].name) {%>
+      <% if(providers[key].name) { %>
       <div class="btn-group-lg">
         <a class="btn btn-default btn-block"
            href="/auth/<%= providers[key].slug %>"
@@ -44,11 +44,14 @@
       <% } %>
 
     </div>
-  </article>
 </section>
+
 <footer class="page-footer">
-  <img class="foologo" src="" alt=""/>
-  <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>
+  <div class="row clearfix">
+    <img class="foologo" src="" alt=""/>
+
+    <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>
+  </div>
 </footer>
 </body>
 </html>
