@@ -53,7 +53,7 @@ module.exports.passport = {
       clientSecret: 'SgFGqj0oXyKWUDguQqAB',
       scope: ['email'],
       profileFields: ['screen_name','domain','photo_200_orig','sex','middle_name'],
-      callbackURL: 'http://192.168.0.101/auth/vkontakte/callback'
+      callbackURL: 'http://192.168.0.111/auth/vkontakte/callback'
     }
   }
 /*

@@ -6,7 +6,7 @@ module.exports = {
     sender: {
       model: "member"
     },
-    text: 'STRING',
+    text: 'string',
     recipients: {
       collection: "member"
     }

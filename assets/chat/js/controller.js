@@ -20,7 +20,7 @@ myApp.controller('ChatController', ['$scope', function ($scope) {
    */
   socket.on("init", function (msg) {
     if (msg) {
-      for (var i in msg) {
+      for (var i = 0; i < msg.length; i++) {
         $scope.pushToMessages(msg[i]);
       }
       $scope.$apply();
@@ -36,30 +36,18 @@ myApp.controller('ChatController', ['$scope', function ($scope) {
   });
 
   $scope.messageArr = [];
-  $scope.memberArr = [];
 
   $scope.sendData = function () {
-    if($scope.messageTxt.trim() != "") {
+    if ($scope.messageTxt.trim() != "") {
       socket.post('/chat/init', {message: $scope.messageTxt});
       $scope.messageTxt = "";
     }
-  }
+  };
 
   $scope.pushToMessages = function (item) {
-    $scope.messageArr.unshift({
-      text: item.message,
-      user: item.user
-    });
+    $scope.messageArr.unshift(item);
   };
 
-  $scope.pushToMembers = function (item) {
-    $scope.memberArr.unshift({
-      nick: item.nick,
-      photoUrl: item.photoUrl,
-      firstName: item.firstName,
-      lastName: item.lastName
-    });
-  };
 }]);
 
 myApp.directive('ngEnter', function () {

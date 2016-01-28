@@ -32,14 +32,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
-/*  '/login': {
-    view: 'login'
-  },*/
+  'get /': 'UserProfileController.home',
+  'get /profile': 'UserProfileController.profile',
+
   'get /chat': 'ChatController.chat',
-  '/chat/init': 'ChatController.init',
+  'post /chat/init': 'ChatController.init',
 
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
