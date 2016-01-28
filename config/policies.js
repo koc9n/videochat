@@ -41,7 +41,7 @@ module.exports.policies = {
   'auth': {
     '*': ['passport']
   },
-  UserProfileController: {
-    'home': true
+  HomeController: {
+    'home': ['passport']
   },
 };

@@ -38,9 +38,11 @@ module.exports.passport = {
     protocol: 'oauth2',
     strategy: require('passport-facebook').Strategy,
     options: {
-      clientID: 'your-client-id',
-      clientSecret: 'your-client-secret',
-      scope: ['email']
+      clientID: '1639063506338417',
+      clientSecret: '44a8b714f21bdf1896bb2840f832ab6f',
+      scope: ['email'],
+      profileFields: ['id', 'displayName', 'link', 'photos', 'email'],
+      callbackURL: 'http://192.168.0.111/auth/facebook/callback'
     }
   },
 

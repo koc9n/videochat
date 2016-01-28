@@ -12,7 +12,6 @@ module.exports = {
    * @param res
    */
   chat: function (req, res) {
-    sails.log(req.session);
     return res.view("chat");
   },
 
@@ -34,12 +33,13 @@ module.exports = {
         User.find(req.session.passport.user).exec(function findCB(err, found) {
           while (found.length) {
             var sessionUser = found.pop();
-            Chat.create({message: data_from_client.message, user: sessionUser}).populate('user')
+            ChatItem.create({message: data_from_client.message, user: sessionUser}).populate('user')
               .exec(function (error, data_from_client) {
                 if (err) {
                   sails.error(err);
                 }
-                sails.sockets.broadcast('1', 'chat', {message: data_from_client.message, user: sessionUser});
+                data_from_client.user = sessionUser;
+                sails.sockets.broadcast('1', 'chat', data_from_client);
               });
           }
         });
@@ -51,11 +51,11 @@ module.exports = {
      */
     else if (req.isSocket) {
       sails.sockets.join(req.socket,'1');
-      Chat.find({}).populate('user').exec(function (err, chatHistory) {
+      ChatItem.find({}).populate('user').exec(function (err, chatHistory) {
         if (err) {
           sails.error(err);
         }
-        sails.sockets.broadcast('1','init', chatHistory);
+        sails.sockets.emit(req.socket,'init', chatHistory);
       })
     }
   }
