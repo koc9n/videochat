@@ -52,7 +52,7 @@ module.exports.passport = {
     protocol: 'oauth2',
     strategy: require('vkontakte-passport').Strategy,
     options: {
-      clientID: sail.config.vk.apiId || '4551676',
+      clientID: '4551676',
       clientSecret: 'SgFGqj0oXyKWUDguQqAB',
       scope: ['email'],
       profileFields: ['screen_name','domain','photo_200_orig','sex','middle_name'],

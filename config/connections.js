@@ -60,7 +60,7 @@ module.exports.connections = {
 
   herokuMongodbServer: {
     adapter: 'sails-mongo',
-    url: sail.config.MONGOLAB_URI || 'mongodb://localhost:27017/chatDB'
+    url: process.env.MONGOLAB_URI || 'mongodb://localhost:27017/chatDB'
   },
 
   /***************************************************************************
