@@ -28,8 +28,9 @@ module.exports.passport = {
     protocol: 'oauth',
     strategy: require('passport-twitter').Strategy,
     options: {
-      consumerKey: 'your-consumer-key',
-      consumerSecret: 'your-consumer-secret'
+      consumerKey: 'unlTey7V2HCb93M2p7rGb6d6L',
+      consumerSecret: 'rEnFfTC92uzuPbyTNOOzSozdbSNW9R5QEvSamuAtpY2MK9gFPg',
+      callbackURL: 'http://192.168.0.111/auth/facebook/callback'
     }
   },
 
@@ -51,7 +52,7 @@ module.exports.passport = {
     protocol: 'oauth2',
     strategy: require('vkontakte-passport').Strategy,
     options: {
-      clientID: '4551676',
+      clientID: sail.config.vk.apiId || '4551676',
       clientSecret: 'SgFGqj0oXyKWUDguQqAB',
       scope: ['email'],
       profileFields: ['screen_name','domain','photo_200_orig','sex','middle_name'],

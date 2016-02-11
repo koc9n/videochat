@@ -67,11 +67,10 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-   adapter: 'mongo',
-   host: 'localhost',
-   port: 27017,
-   db: 'sails',
-   collection: 'sessions',
+
+    adapter: 'sails-mongo',
+    url: sail.config.MONGOLAB_URI || 'mongodb://localhost:27017/chatDB',
+
 
   /***************************************************************************
   *                                                                          *
