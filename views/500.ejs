@@ -1,14 +1,7 @@
 <header class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="/">Social Chat</a>
     </div>
 
@@ -17,22 +10,28 @@
 </header>
 <section class="container">
   <div class="main">
-    <h1>
-      Internal Server Error
-    </h1>
-    <h2>
-      Something isn't right here.
-    </h2>
-    <% if (typeof error !== 'undefined') { %>
-    <pre class="error"><code>
-        <%- error %>
-      </code></pre>
-    <% } else { %>
-    <p class="error">
-      A team of highly trained sea bass is working on this as we speak.<br/>
-      If the problem persists, please <a href="mailto://you@your-domain.com">contact the system administrator</a> and
-      inform them of the time that the error occured, and anything you might have done that may have caused the error.
-    </p>
+    <div class="row">
+      <div class="col-sm-4"><img src="/images/500-err.png" width="256" alt="500"/></div>
+      <div class="col-sm-6">
+        <h1>
+          Internal Server Error
+        </h1>
+        <h2>
+          Something isn't right here.
+        </h2>
+        <% if (typeof error !== 'undefined') { %>
+        <pre class="error"><code>
+            <%- error %>
+          </code></pre>
+        <% } else { %>
+        <p class="error">
+          A team of highly trained sea bass is working on this as we speak.<br/>
+          If the problem persists, please <a href="mailto://kos.mironchik@gmail.com.com">contact the system administrator</a> and
+          inform them of the time that the error occured, and anything you might have done that may have caused the error.
+        </p>
+      </div>
+    </div>
+
     <% } %>
   </div>
 </section>

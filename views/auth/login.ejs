@@ -1,5 +1,5 @@
 <header class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Social Chat</a>
@@ -10,48 +10,47 @@
 </header>
 
 </div>
-<section class="container-fluid text-center">
-    <div class="error">
-      <% if (errors) { %>
-      <% errors.forEach(function (error) { %>
-      <%= __(error) %>
+<section class="container text-center">
+  <div class="error">
+    <% if (errors) { %>
+    <% errors.forEach(function (error) { %>
+    <%= __(error) %>
+    <% }) %>
+    <% } %>
+  </div>
+
+  <div class="raw">
+    <div class="col-lg-5">
+      <form role="form" action="/auth/local" method="post">
+
+        <input type="text" name="identifier" class="form-control" placeholder="Username or Email">
+        <input type="password" name="password" class="form-control" placeholder="Password">
+
+        <button class="btn-link" type="submit">Sign in</button>
+      </form>
+    </div>
+    <div class="col-lg-2">or</div>
+    <div class="col-lg-5">
+      <% if (Object.keys(providers).length) { %>
+      <% Object.keys(providers).forEach(function (key) { %>
+      <% if(providers[key].name) { %>
+      <a href="/auth/<%= providers[key].slug %>"
+         target="_top"><img src="/images/<%= providers[key].name %>.png" alt="<%= providers[key].name %>"
+                            class="img-rounded login-img"></a>
+      <% } %>
       <% }) %>
       <% } %>
     </div>
-
-    <div class="raw">
-      <div class="col-lg-5">
-        <form role="form" action="/auth/local" method="post">
-
-            <input type="text" name="identifier" class="form-control" placeholder="Username or Email">
-            <input type="password" name="password" class="form-control" placeholder="Password">
-
-          <button class="btn-link" type="submit">Sign in</button>
-        </form>
-      </div>
-      <div class="col-lg-2">or</div>
-      <div class="col-lg-5">
-        <% if (Object.keys(providers).length) { %>
-        <% Object.keys(providers).forEach(function (key) { %>
-        <% if(providers[key].name) { %>
-        <a href="/auth/<%= providers[key].slug %>"
-           target="_top"><img src="/images/<%= providers[key].name %>.png" alt="<%= providers[key].name %>"
-                              class="img-rounded login-img"></a>
-        <% } %>
-        <% }) %>
-        <% } %>
-      </div>
-    </div>
+  </div>
 </section>
 
 <footer class="footer navbar-fixed-bottom">
-<div class="container">
-  <img class="foologo" src="" alt=""/>
-  <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>
-</div>
+  <div class="container">
+    <img class="foologo" src="" alt=""/>
+    <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>
+  </div>
 </footer>
-</body>
-</html>
+
 
 
 

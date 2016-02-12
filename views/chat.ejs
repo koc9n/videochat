@@ -15,7 +15,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/logout">Log out</a></li>
+        <li><a href="/logout">Sign out</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -38,7 +38,7 @@
       <div>
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="message in messageArr">
-            <kbd>{{message.createdAt | date:"MM.dd.yyyy h:mma"}}</kbd>
+            <span>{{message.createdAt | date:"MM.dd.yyyy h:mma"}}</span>
             <a style="display:block;float:right;" id="thumb" href="{{message.user.profileUrl}}"
                target="_blank"
                tooltip-placement="left"
@@ -46,8 +46,8 @@
               <img style="width:50px;height:auto" ng-src="{{message.user.photos[0].value}}"
                    class="img-circle img-responsive">
             </a>
-
-            <p style="padding-right: 50px;">{{message.message}}</p>
+            <br>
+            <kbd style="padding-right: 50px;">{{message.message}}</kbd>
 
             <div style="clear: both;"></div>
           </li>

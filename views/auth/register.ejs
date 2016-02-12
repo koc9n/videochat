@@ -1,12 +1,30 @@
-<% if (errors) {%>
-  <% errors.forEach(function (error) { %>
-    <%= __(error) %>
-  <% }) %>
-<% } %>
+<header class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Social Chat</a>
+      <a class="navbar-brand" href="/login">Sign In</a>
+    </div>
 
-<form role="form" action="/auth/local/register" method="post">
-  <input type="text" name="username" placeholder="Username">
-  <input type="text" name="email" placeholder="Email">
-  <input type="password" name="password" placeholder="Password">
-  <button type="submit">Sign up</button>
-</form>
+  </div><!-- /.container-fluid -->
+</header>
+<section class="container text-center">
+  <% if (errors) { %>
+  <% errors.forEach(function (error) { %>
+  <%= __(error) %>
+  <% }) %>
+  <% } %>
+
+  <form role="form" action="/auth/local/register" method="post">
+    <input type="text" name="username" placeholder="Username">
+    <input type="text" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Sign up</button>
+  </form>
+</section>
+<footer class="footer navbar-fixed-bottom">
+  <div class="container">
+    <img class="foologo" src="" alt=""/>
+    <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>
+  </div>
+</footer>
