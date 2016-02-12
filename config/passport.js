@@ -29,8 +29,7 @@ module.exports.passport = {
     strategy: require('passport-twitter').Strategy,
     options: {
       consumerKey: 'unlTey7V2HCb93M2p7rGb6d6L',
-      consumerSecret: 'rEnFfTC92uzuPbyTNOOzSozdbSNW9R5QEvSamuAtpY2MK9gFPg',
-      callbackURL: 'http://192.168.0.111/auth/facebook/callback'
+      consumerSecret: 'rEnFfTC92uzuPbyTNOOzSozdbSNW9R5QEvSamuAtpY2MK9gFPg'
     }
   },
 
@@ -42,8 +41,7 @@ module.exports.passport = {
       clientID: '1639063506338417',
       clientSecret: '44a8b714f21bdf1896bb2840f832ab6f',
       scope: ['email'],
-      profileFields: ['id', 'displayName', 'link', 'photos', 'email'],
-      callbackURL: 'http://192.168.0.111/auth/facebook/callback'
+      profileFields: ['id', 'displayName', 'link', 'photos', 'email']
     }
   },
 
@@ -55,8 +53,7 @@ module.exports.passport = {
       clientID: '4551676',
       clientSecret: 'SgFGqj0oXyKWUDguQqAB',
       scope: ['email'],
-      profileFields: ['screen_name','domain','photo_200_orig','sex','middle_name'],
-      callbackURL: 'http://192.168.0.111/auth/vkontakte/callback'
+      profileFields: ['screen_name','domain','photo_200_orig','sex','middle_name']
     }
   }
 /*
