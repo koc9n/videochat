@@ -1,5 +1,14 @@
 body {
-  padding-top: 70px;
+  margin:0;
+  padding:0;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+header {
+  margin-bottom: 20px;
 }
 
 .login-img {
@@ -13,8 +22,5 @@ body {
 }
 
 @media (max-width: 767px) {
-  .login-img {
-    width: 32px;
-    height: 32px;
-  }
+
 }

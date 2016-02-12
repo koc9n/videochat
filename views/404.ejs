@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
+<header class="header modal-header navbar-inverse">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -9,20 +9,23 @@
 
   </div><!-- /.container-fluid -->
 </header>
-<section class="">
+<section class="container">
   <div class="main">
     <div class="row">
-      <div class="col-sm-4"><img src="/images/404-err.png" width="256" alt="404"/></div>
-      <div class="col-sm-6"><h1>
-          Oops....
-        </h1>
+      <div class="col-sm-6 col-md-5 col-lg-4 text-center">
+        <img src="/images/404-err.png" width="256" alt="404"/>
+      </div>
+      <div class="col-sm-6 col-md-7 col-lg-8 text-center">
         <h2>
+          Oops....
+        </h2>
+        <h3>
           <% if (typeof error !== 'undefined') { %>
           <%= error %>
           <% } else { %>
           The page you were trying to reach doesn't exist.
           <% } %>
-        </h2>
+        </h3>
         <p class="help">
           <a href="http://en.wikipedia.org/wiki/HTTP_404">Why</a> might this be happening?
         </p>
@@ -30,7 +33,7 @@
     </div>
   </div>
 </section>
-<footer class="footer navbar-fixed-bottom">
+<footer class="footer panel-footer">
   <div class="container">
     <img class="foologo" src="" alt=""/>
     <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>

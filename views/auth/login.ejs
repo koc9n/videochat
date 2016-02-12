@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
+<header class="header modal-header navbar-inverse">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -20,17 +20,17 @@
   </div>
 
   <div class="raw">
-    <div class="col-lg-5">
+    <div class="col-sm-4">
       <form role="form" action="/auth/local" method="post">
-
         <input type="text" name="identifier" class="form-control" placeholder="Username or Email">
+        <br>
         <input type="password" name="password" class="form-control" placeholder="Password">
-
+        <br>
         <button class="btn-link" type="submit">Sign in</button>
       </form>
     </div>
-    <div class="col-lg-2">or</div>
-    <div class="col-lg-5">
+    <div class="col-sm-4">or</div>
+    <div class="col-sm-4">
       <% if (Object.keys(providers).length) { %>
       <% Object.keys(providers).forEach(function (key) { %>
       <% if(providers[key].name) { %>
@@ -44,7 +44,7 @@
   </div>
 </section>
 
-<footer class="footer navbar-fixed-bottom">
+<footer class="footer panel-footer">
   <div class="container">
     <img class="foologo" src="" alt=""/>
     <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>

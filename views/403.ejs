@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
+<header class="header modal-header navbar-inverse">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -12,18 +12,20 @@
 <section class="container">
   <div class="main">
     <div class="row">
-      <div class="col-sm-4"><img src="/images/403-err.png" width="256" alt="403"/></div>
-      <div class="col-sm-6">
-        <h1>
-          Forbidden
-        </h1>
+      <div class="col-sm-6 col-md-5 col-lg-4 text-center">
+        <img src="/images/403-err.png" width="256" alt="403"/>
+      </div>
+      <div class="col-sm-6 col-md-7 col-lg-8 text-center">
         <h2>
+          Forbidden
+        </h2>
+        <h3>
           <% if (typeof error !== 'undefined') { %>
           <%= error %>
           <% } else { %>
           You don't have permission to see the page you're trying to reach.
           <% } %>
-        </h2>
+        </h3>
         <p class="help">
           Please
           <a href="/login"> Login </a>
@@ -33,7 +35,7 @@
 
   </div>
 </section>
-<footer class="footer navbar-fixed-bottom">
+<footer class="footer panel-footer">
   <div class="container">
     <img class="foologo" src="" alt=""/>
     <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>

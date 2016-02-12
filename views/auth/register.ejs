@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
+<header class="header modal-header navbar-inverse">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -16,13 +16,16 @@
   <% } %>
 
   <form role="form" action="/auth/local/register" method="post">
-    <input type="text" name="username" placeholder="Username">
-    <input type="text" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
-    <button type="submit">Sign up</button>
+    <input type="text" class="form-control" name="username" placeholder="Username"/>
+    <br>
+    <input type="text" class="form-control" name="email" placeholder="Email"/>
+    <br>
+    <input type="password" class="form-control" name="password" placeholder="Password"/>
+    <br>
+    <button class="btn-link" type="submit">Sign up</button>
   </form>
 </section>
-<footer class="footer navbar-fixed-bottom">
+<footer class="footer panel-footer">
   <div class="container">
     <img class="foologo" src="" alt=""/>
     <p>Site is powered by Konstantin Mironchik. All rigths reserved.</p>
