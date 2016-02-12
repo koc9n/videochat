@@ -36,7 +36,7 @@ module.exports = {
 
   passport: {
     twitter: {
-      name: 'Twitter',
+      name: 'twitter',
       protocol: 'oauth',
       strategy: require('passport-twitter').Strategy,
       options: {
@@ -47,7 +47,7 @@ module.exports = {
     },
 
     facebook: {
-      name: 'Facebook',
+      name: 'facebook',
       protocol: 'oauth2',
       strategy: require('passport-facebook').Strategy,
       options: {
@@ -60,7 +60,7 @@ module.exports = {
     },
 
     vkontakte: {
-      name: 'Vkontakte',
+      name: 'vkontakte',
       protocol: 'oauth2',
       strategy: require('vkontakte-passport').Strategy,
       options: {
