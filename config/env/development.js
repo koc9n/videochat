@@ -30,7 +30,7 @@ module.exports = {
       options: {
         consumerKey: 'unlTey7V2HCb93M2p7rGb6d6L',
         consumerSecret: 'rEnFfTC92uzuPbyTNOOzSozdbSNW9R5QEvSamuAtpY2MK9gFPg',
-        callbackURL: 'http://coolapps.pp.ua/auth/twitter/callback'
+        callbackURL: 'http://coolchatting.herokuapp.com/auth/twitter/callback'
       }
     },
 
@@ -43,7 +43,7 @@ module.exports = {
         clientSecret: '44a8b714f21bdf1896bb2840f832ab6f',
         scope: ['email'],
         profileFields: ['id', 'displayName', 'link', 'photos', 'email'],
-        callbackURL: 'http://coolapps.pp.ua/auth/facebook/callback'
+        callbackURL: 'http://coolchatting.herokuapp.com/auth/facebook/callback'
       }
     },
 
@@ -56,7 +56,7 @@ module.exports = {
         clientSecret: 'SgFGqj0oXyKWUDguQqAB',
         scope: ['email'],
         profileFields: ['screen_name','domain','photo_200_orig','sex','middle_name'],
-        callbackURL: 'http://coolapps.pp.ua/auth/vkontakte/callback'
+        callbackURL: 'http://coolchatting.herokuapp.com/auth/vkontakte/callback'
       }
     }
   }
