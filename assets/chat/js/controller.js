@@ -3,7 +3,7 @@
  */
 var myApp = angular.module('ChatApp', []);
 
-myApp.controller('ChatController', ['$scope', function ($scope) {
+myApp.controller('ChatCtrl', ['$scope', function ($scope) {
   io.sails.transports = ['websocket'];
   var socket = io.sails.connect();
   socket.get('/chat/init');
