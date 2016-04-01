@@ -1,0 +1,24 @@
+<section class="container text-center" ng-controller="LoginCtrl">
+
+
+  <div class="raw">
+    <div class="col-sm-4">
+      <form role="form">
+        <input ng-model="usr.identifier" type="text" name="identifier" class="form-control"
+               placeholder="Username or Email">
+        <br>
+        <input ng-model="usr.password" type="password" name="password" class="form-control" placeholder="Password">
+        <br>
+        <button class="btn-link" type="submit" ng-click="submit(usr)">Sign in</button>
+      </form>
+    </div>
+    <ul ng-cloak class="nav navbar-nav navbar-right">
+      <li ng-repeat="provider in providers">
+        <span ng-click="loginProvider('/auth/' + provider.slug)"
+              target="_top"><img ng-src="/images/{{ provider.name }}.png" alt="{{ provider.name }}"
+                                 class="img-rounded login-img"></span>
+      </li>
+    </ul>
+  </div>
+</section>
+

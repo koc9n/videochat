@@ -6,16 +6,20 @@
  * the basics of Passport.js to work.
  */
 var AuthController = {
+  providers: function (req, res) {
+    res.json(AuthController._getProviders());
+  },
+
   /**
    * Render the login page
    *
    * The login form itself is just a simple HTML form:
    *
-      <form role="form" action="/auth/local" method="post">
-        <input type="text" name="identifier" placeholder="Username or Email">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Sign in</button>
-      </form>
+   <form role="form" action="/auth/local" method="post">
+   <input type="text" name="identifier" placeholder="Username or Email">
+   <input type="password" name="password" placeholder="Password">
+   <button type="submit">Sign in</button>
+   </form>
    *
    * You could optionally add CSRF-protection as outlined in the documentation:
    * http://sailsjs.org/#!documentation/config.csrf
@@ -23,33 +27,19 @@ var AuthController = {
    * A simple example of automatically listing all available providers in a
    * Handlebars template would look like this:
    *
-      {{#each providers}}
-        <a href="/auth/{{slug}}" role="button">{{name}}</a>
-      {{/each}}
+   {{#each providers}}
+   <a href="/auth/{{slug}}" role="button">{{name}}</a>
+   {{/each}}
    *
    * @param {Object} req
    * @param {Object} res
    */
   login: function (req, res) {
-    var strategies = sails.config.passport
-      , providers  = {};
-
-    // Get a list of available providers for use in your templates.
-    Object.keys(strategies).forEach(function (key) {
-      if (key === 'local') {
-        return;
-      }
-
-      providers[key] = {
-        name: strategies[key].name
-      , slug: key
-      };
-    });
 
     // Render the `auth/login.ext` view
     res.view({
-      providers : providers
-    , errors    : req.flash('error')
+      providers: AuthController._getProviders(),
+      errors: req.flash('error')
     });
   },
 
@@ -81,12 +71,12 @@ var AuthController = {
    *
    * Just like the login form, the registration form is just simple HTML:
    *
-      <form role="form" action="/auth/local/register" method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Sign up</button>
-      </form>
+   <form role="form" action="/auth/local/register" method="post">
+   <input type="text" name="username" placeholder="Username">
+   <input type="text" name="email" placeholder="Email">
+   <input type="password" name="password" placeholder="Password">
+   <button type="submit">Sign up</button>
+   </form>
    *
    * @param {Object} req
    * @param {Object} res
@@ -124,14 +114,14 @@ var AuthController = {
    * @param {Object} res
    */
   callback: function (req, res) {
-    function tryAgain (err) {
+    function tryAgain(err) {
       sails.log(err);
       // Only certain error messages are returned via req.flash('error', someError)
       // because we shouldn't expose internal authorization errors to the user.
       // We do return a generic error and the original request body.
       var flashError = req.flash('error')[0];
 
-      if (err && !flashError ) {
+      if (err && !flashError) {
         req.flash('error', 'Error.Passport.Generic');
       } else if (flashError) {
         req.flash('error', flashError);
@@ -143,16 +133,7 @@ var AuthController = {
       // These views should take care of rendering the error messages.
       var action = req.param('action');
 
-      switch (action) {
-        case 'register':
-          res.redirect('/register');
-          break;
-        case 'disconnect':
-          res.redirect('back');
-          break;
-        default:
-          res.redirect('/login');
-      }
+      res.json({error: req.__(req.flash('error')[0])});
     }
 
     passport.callback(req, res, function (err, user, challenges, statuses) {
@@ -172,7 +153,7 @@ var AuthController = {
 
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
-        res.redirect('/');
+        res.json(req.session.passport);
       });
     });
   },
@@ -186,6 +167,23 @@ var AuthController = {
   disconnect: function (req, res) {
     passport.disconnect(req, res);
   }
+};
+
+AuthController._getProviders = function () {
+  var strategies = sails.config.passport
+    , providers = {};
+
+  // Get a list of available providers for use in your templates.
+  Object.keys(strategies).forEach(function (key) {
+    if (key === 'local' || key === 'bearer') {
+      return;
+    }
+
+    providers[key] = strategies[key];
+    providers[key].slug = key;
+
+  });
+  return providers;
 };
 
 module.exports = AuthController;

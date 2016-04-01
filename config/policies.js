@@ -37,11 +37,14 @@ module.exports.policies = {
 
 
 
-  '*': ['passport','sessionAuth'],
+  '*': ['passport', 'bearerAuth'],
   'auth': {
     '*': ['passport']
   },
   HomeController: {
     'home': ['passport']
+  },
+  ChatController: {
+    '*': ['passport']
   },
 };

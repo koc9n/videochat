@@ -1,0 +1,24 @@
+<section class="container text-center" ng-controller="RegisterCtrl">
+
+  <div class="raw">
+    <div class="col-sm-4">
+      <form role="form">
+        <input ng-model="usr.username" type="text" class="form-control" name="username" placeholder="Username"/>
+        <br>
+        <input ng-model="usr.email" type="text" class="form-control" name="email" placeholder="Email"/>
+        <br>
+        <input ng-model="usr.password" type="password" class="form-control" name="password" placeholder="Password"/>
+        <br>
+        <button class="btn-link" ng-click="submit(usr)" type="submit">Sign up</button>
+      </form>
+    </div>
+    <ul ng-cloak class="nav navbar-nav navbar-right">
+      <li ng-repeat="provider in providers">
+        <a href="/auth/{{ provider.slug }}"
+           target="_top"><img ng-src="/images/{{ provider.name }}.png" alt="{{ provider.name }}"
+                              class="img-rounded login-img"></a>
+      </li>
+    </ul>
+  </div>
+</section>
+

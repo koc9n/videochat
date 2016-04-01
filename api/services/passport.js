@@ -152,7 +152,7 @@ passport.connect = function (req, query, profile, next) {
               return next(err);
             }
 
-            next(err, user);
+            User.findOne(passport.user).populate('passports').exec(next);
           });
         });
       }
@@ -172,7 +172,7 @@ passport.connect = function (req, query, profile, next) {
           }
 
           // Fetch the user associated with the Passport
-          User.findOne(passport.user.id, next);
+          User.findOne(passport.user).populate('passports').exec(next);
         });
       }
     } else {
@@ -188,7 +188,7 @@ passport.connect = function (req, query, profile, next) {
             return next(err);
           }
 
-          next(err, req.user);
+          User.findOne(passport.user).populate('passports').exec(next);
         });
       }
       // Scenario: The user is a nutjob or spammed the back-button.
@@ -388,7 +388,7 @@ passport.disconnect = function (req, res, next) {
 };
 
 passport.serializeUser(function (user, next) {
-  next(null, user.id);
+  next(null, user);
 });
 
 passport.deserializeUser(function (id, next) {

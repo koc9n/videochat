@@ -30,7 +30,7 @@ module.exports = {
       // This is the message from connected client
       // So add new conversation
       if(data_from_client.message.trim() != "") {
-        User.find(req.session.passport.user).exec(function findCB(err, found) {
+        User.find(req.session.passport.user.id).exec(function findCB(err, found) {
           while (found.length) {
             var sessionUser = found.pop();
             ChatItem.create({message: data_from_client.message, user: sessionUser}).populate('user')
@@ -51,7 +51,7 @@ module.exports = {
      */
     else if (req.isSocket) {
       sails.sockets.join(req.socket,'1');
-      ChatItem.find({}).populate('user').exec(function (err, chatHistory) {
+      ChatItem.find().populate('user').exec(function (err, chatHistory) {
         if (err) {
           sails.error(err);
         }
