@@ -3,17 +3,20 @@
  */
 angular.module('ChatApp')
   .service('ToasterSrvc', ['ngToast', function (ngToast) {
+    var settings = {
+      timeout : 1000
+    };
 
     this.toastError = function (msg) {
       ngToast.create({
-        timeout: 5000,
+        timeout: settings.timeout,
         className: 'danger',
         content: '<span>' + msg + '</span>'
       });
     };
     this.toastSuccess = function (msg) {
       ngToast.create({
-        timeout: 5000,
+        timeout: settings.timeout,
         className: 'success',
         content: '<span>success logged in:' + msg + '</span>'
       });
