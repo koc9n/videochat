@@ -3,8 +3,8 @@
  */
 (function () {
   'use strict';
-  var chatApp = angular.module('ChatApp', []);
-  chatApp.service('CookieSrvc', ['$cookies', function ($cookies) {
+
+  angular.module('ChatApp').service('CookieSrvc', ['$cookies', function ($cookies) {
 
     this.put = function (key, data) {
       $cookies.putObject(key, data);

@@ -3,8 +3,8 @@
  */
 (function () {
   'use strict';
-  var chatApp = angular.module('ChatApp', []);
-  chatApp.service('ToasterSrvc', ['ngToast', function (ngToast) {
+
+  angular.module('ChatApp').service('ToasterSrvc', ['ngToast', function (ngToast) {
     var settings = {
       timeout: 1000
     };

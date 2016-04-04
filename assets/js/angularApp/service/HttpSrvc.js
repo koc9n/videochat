@@ -3,8 +3,7 @@
  */
 (function () {
   'use strict';
-  var chatApp = angular.module('ChatApp', []);
-  chatApp.service('HttpSrvc', ['$http', function ($http) {
+  angular.module('ChatApp').service('HttpSrvc', ['$http', function ($http) {
 
     this.getProviders = function () {
       return $http.get('/providers');
