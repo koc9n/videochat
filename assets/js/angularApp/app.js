@@ -1,7 +1,11 @@
 /**
  * Created by koc9n on 21.02.16.
  */
-var myApp = angular.module('ChatApp', ['ngRoute', 'ngToast', 'ngCookies']);
+var myApp = angular.module('ChatApp',
+  ['ngRoute', 'ngToast', 'ngCookies', 'ngEnter',
+    'CookieSrvc', 'HttpSrvc', 'ToasterSrvc',
+    'ChatCtrl', 'HeaderCtrl', 'HomeCtrl', 'LoginCtrl', 'LogoutCtrl', 'RegisterCtrl'
+  ]);
 
 myApp.
 config(['$routeProvider',
