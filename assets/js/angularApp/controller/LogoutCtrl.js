@@ -10,6 +10,6 @@
       $rootScope.authenticated = false;
       CookieSrvc.put('user', null);
       $location.path('/');
-    }])
+    }]);
 
-}())
+}());

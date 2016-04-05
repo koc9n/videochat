@@ -7,6 +7,6 @@
 
   angular.module('ChatApp').controller('HomeCtrl', ['$scope', 'CookieSrvc', function ($scope, CookieSrvc) {
     $scope.user = CookieSrvc.get('user');
-  }])
+  }]);
 
-}())
+}());

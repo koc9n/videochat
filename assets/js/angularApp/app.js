@@ -2,7 +2,9 @@
  * Created by koc9n on 21.02.16.
  */
 var myApp = angular.module('ChatApp',
-  ['ngRoute', 'ngToast', 'ngCookies']).
+  ['ngRoute', 'ngToast', 'ngCookies']);
+myApp.$inject = ['CookieSrvc'];
+myApp.
 config(['$routeProvider',
   function ($routeProvider) {
     $routeProvider

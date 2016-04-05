@@ -51,5 +51,5 @@
     $scope.pushToMessages = function (item) {
       $scope.messageArr.unshift(item);
     };
-  }])
-}())
+  }]);
+}());

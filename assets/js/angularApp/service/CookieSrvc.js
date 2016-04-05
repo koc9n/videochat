@@ -21,4 +21,4 @@
       return $cookies.getObject('user') != null;
     }
   };
-}())
+}());
