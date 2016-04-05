@@ -4,7 +4,10 @@
 (function () {
   'use strict';
 
-  angular.module('ChatApp').service('CookieSrvc', ['$cookies', function ($cookies) {
+  angular.module('ChatApp').service('CookieSrvc', CookieSrvc);
+  CookieSrvc.$inject = ['$cookies'];
+
+  function CookieSrvc ($cookies) {
 
     this.put = function (key, data) {
       $cookies.putObject(key, data);
@@ -17,5 +20,5 @@
     this.isAuthenticated = function () {
       return $cookies.getObject('user') != null;
     }
-  }]);
+  };
 }())
