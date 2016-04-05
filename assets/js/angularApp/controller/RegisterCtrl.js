@@ -5,8 +5,7 @@
 
   'use strict';
 
-  angular.module('ChatApp').controller('RegisterCtrl',
-    ['$rootScope', '$scope', 'ToasterSrvc', 'HttpSrvc', 'CookieSrvc',
+  angular.module('ChatApp').controller('RegisterCtrl', ['$rootScope', '$scope', 'ToasterSrvc', 'HttpSrvc', 'CookieSrvc',
       function ($rootScope, $scope, ToasterSrvc, HttpSrvc, CookieSrvc) {
         HttpSrvc.getProviders().then(function (response) {
           $scope.providers = response.data;
@@ -32,4 +31,4 @@
         }
       }])
 
-}());
+}())

@@ -9,4 +9,4 @@
     $scope.user = CookieSrvc.get('user');
   }])
 
-}());
+}())

@@ -2,12 +2,7 @@
  * Created by koc9n on 21.02.16.
  */
 var myApp = angular.module('ChatApp',
-  ['ngRoute', 'ngToast', 'ngCookies', 'ngEnter',
-    'CookieSrvc', 'HttpSrvc', 'ToasterSrvc',
-    'ChatCtrl', 'HeaderCtrl', 'HomeCtrl', 'LoginCtrl', 'LogoutCtrl', 'RegisterCtrl'
-  ]);
-
-myApp.
+  ['ngRoute', 'ngToast', 'ngCookies']).
 config(['$routeProvider',
   function ($routeProvider) {
     $routeProvider
@@ -41,8 +36,7 @@ config(['$routeProvider',
         caseInsensitiveMatch: true,
         public: true
       })
-  }]).
-run(['$rootScope', '$location', 'CookieSrvc', 'ToasterSrvc', function ($rootScope, $location, CookieSrvc, ToasterSrvc) { //Insert in the function definition the dependencies you need.
+  }]).run(['$rootScope', '$location', 'CookieSrvc', 'ToasterSrvc', function ($rootScope, $location, CookieSrvc, ToasterSrvc) { //Insert in the function definition the dependencies you need.
   //Do your $on in here, like this:
   $rootScope.$on("$routeChangeStart", function (event, next, current) {
     //Do your things
