@@ -29,7 +29,11 @@
     -->
 
     <!--STYLES-->
-    <link rel="stylesheet" href="/min/production.min.css">
+    <link rel="stylesheet" href="/vendor/ngToast/ngToast.css">
+    <link rel="stylesheet" href="/styles/angular-csp.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/chat.css">
     <!--STYLES END-->
   </head>
 
@@ -96,7 +100,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+    <script type="text/javascript" src="/jst.js"></script>
     <!--TEMPLATES END-->
 
 
@@ -124,7 +128,24 @@
     -->
 
     <!--SCRIPTS-->
-    <script src="/min/production.min.js"></script>
+    <script src="/vendor/jquery/jquery.js"></script>
+    <script src="/vendor/bootstrap/bootstrap.js"></script>
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/vendor/angular-cookies/angular-cookies.js"></script>
+    <script src="/vendor/angular-route/angular-route.js"></script>
+    <script src="/vendor/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/vendor/ngToast/ngToast.js"></script>
+    <script src="/js/angularApp/app.js"></script>
+    <script src="/js/angularApp/controller/ChatCtrl.js"></script>
+    <script src="/js/angularApp/controller/HomeCtrl.js"></script>
+    <script src="/js/angularApp/controller/LoginCtrl.js"></script>
+    <script src="/js/angularApp/controller/LogoutCtrl.js"></script>
+    <script src="/js/angularApp/controller/RegisterCtrl.js"></script>
+    <script src="/js/angularApp/directive/ChatDirective.js"></script>
+    <script src="/js/angularApp/service/CookieSrvc.js"></script>
+    <script src="/js/angularApp/service/HttpSrvc.js"></script>
+    <script src="/js/angularApp/service/ToasterSrvc.js"></script>
+    <script src="/js/sailsio/sails.io.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

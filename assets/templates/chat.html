@@ -17,6 +17,7 @@
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="message in messageArr">
             <span>{{message.createdAt | date:"MM.dd.yyyy h:mma"}}</span>
+            <span ng-if="message.user.username">|| {{message.user.username}}</span>
             <a style="display:block;float:right;" id="thumb" href="{{message.user.profileUrl}}"
                target="_blank"
                tooltip-placement="left"
